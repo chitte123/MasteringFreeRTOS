@@ -1,0 +1,8 @@
+EWARM/masteringFreeRTOS
+EWARM/settings
+*.dep
+*.ewd
+*.ewt
+*.IOC
+*.mxproject
+
