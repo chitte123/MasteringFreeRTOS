@@ -20,31 +20,29 @@ void mainFreeRTOS(void)
   char *pcTaskName1 = "Task 1 is running\r\n";
   char *pcTaskName2 = "Task 2 is running\r\n";
   xTaskCreate( vTaskFunction, "Task 1", 1000,(void *)pcTaskName1, 1, NULL );
-  xTaskCreate( vTaskFunction, "Task 2", 1000,(void *)pcTaskName2, 2, NULL );
+  xTaskCreate( vTaskFunction, "Task 2", 1000,(void *)pcTaskName2, 1, NULL );
   vTaskStartScheduler();
 }
 
 void vTaskFunction( void *pvParameters )
 {
   char *pcString = (char *)pvParameters;
-  //volatile uint32_t ul; /* volatile to ensure ul is not optimized away. */
-  //const TickType_t xDelay250ms = pdMS_TO_TICKS( 250 );
-  
-  TickType_t xLastWakeTime = xTaskGetTickCount();
+  volatile uint32_t ul; /* volatile to ensure ul is not optimized away. */
+
   /* As per most tasks, this task is implemented in an infinite loop. */
   for( ;; )
   {
     /* Print out the name of this task. */
     vPrintString( pcString );
     /* Delay for a period. */
-    vTaskDelayUntil(&xLastWakeTime,pdMS_TO_TICKS( 2500 ));
-//    vTaskDelay(xDelay250ms);
+    vTaskDelay(pdMS_TO_TICKS( 250 ));
 //    for( ul = 0; ul < mainDELAY_LOOP_COUNT; ul++ )
 //    {
 //      /* This loop is just a very crude delay implementation. There is
 //      nothing to do in here. Later examples will replace this crude
 //      loop with a proper delay/sleep function. */
 //    } 
+
   } 
 }
 
