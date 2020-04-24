@@ -4,7 +4,7 @@
 
 extern UART_HandleTypeDef huart2;
 
-void vPrintString( const char *string )
+void vPrintString( char *string )
 {
   uint16_t length = strlen(string);
   
