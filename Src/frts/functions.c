@@ -20,7 +20,7 @@ void mainFreeRTOS(void)
   char *pcTaskName1 = "Task 1 is running\r\n";
   char *pcTaskName2 = "Task 2 is running\r\n";
   xTaskCreate( vTaskFunction, "Task 1", 1000,(void *)pcTaskName1, 1, NULL );
-  xTaskCreate( vTaskFunction, "Task 2", 1000,(void *)pcTaskName2, 1, NULL );
+  xTaskCreate( vTaskFunction, "Task 2", 1000,(void *)pcTaskName2, 2, NULL );
   vTaskStartScheduler();
 }
 
